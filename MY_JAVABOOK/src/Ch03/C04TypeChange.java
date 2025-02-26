@@ -7,7 +7,8 @@ public class C04TypeChange {
 		//int 로 자동 형변환
 		byte x = 10;
 		byte y = 20;
-//		byte result1 = x + y;			//+가 붙게되면 자료형이 변함 램에서 x,y를 cpu로 가져와서 +계산을할때 int형으로 계산
+//		byte result1 = x + y;			//자바에서 연산을 하게되면 작은자료형은 int로 변환됨
+										//램에서 x,y를 cpu로 가져와서 + 계산을할때 int형으로 계산
 //		byte result1 = (byte)(x + y);
 //		System.out.println(result1);
 //		
@@ -32,9 +33,10 @@ public class C04TypeChange {
 		int intvar = 10;
 		float flvar = 3.3F;
 		double dbvar = 5.5;
-		int result3 = intvar + flvar + dbvar;
+		int result3 = (int)(intvar + flvar + dbvar);	//intvar , flvar 가  각각 double 형으로 형변환된값이 더해져서 result 3에 저장
 		double result4 = intvar + flvar + dbvar;
 		System.out.println(result3);
+		System.out.println(result4);
 
 	}
 
