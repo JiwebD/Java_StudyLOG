@@ -53,18 +53,19 @@ public class C06정리_문제풀기 {
 
 		
 //		맞는 코드인지 틀린 코드인지 확인 
-//		byte var = 200;							//( x )
-//		char var='AB';							//( x )
-//		char var=65;							//( o )
+//		byte var = 200;							//( x ) 1byte값을 넘어서 에러 
+//		char var='AB';							//( x ) 하나의 문자만 가능
+//		char var=65;							//( o ) 0~65535 부호없는 정수형으로 유니코드 문자 저장
 //		long var=50000000000;					//( x )	
-//		float var = 3.14;						//( x )
-//		double var = 100.0						//( o )
-//		String var = "나의직업은 "개발자" 입니다.";		//( x )
-//		boolean var = 0;						//( x )
-//		int v2 = 1e2;							//( x )
-//		float =1e2f;							//( x )
-		
+//		float var = 3.14;						//( x ) f접미사 없음 실수의 기본자료는 double인데 64비트를 float32비트에 저장할려니 에러
+//		double var = 100.0						//( o ) 
+//		String var = "나의직업은 "개발자" 입니다.";		//( x ) "" 안에 ""를 입력하고 싶으면 \" \"로 작성해야한다. 
+//		boolean var = 0;						//( x ) 
+//		int v2 = 1e2;							//( x ) 1e2 = 10.0000 (실수) = double
+//		float var =1e2f;						//( o ) 100.0
+
 //		System.out.println(var);
+		
 
 	}
 
