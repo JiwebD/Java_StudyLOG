@@ -38,6 +38,7 @@ public class C08정리_문제풀어보기 {
 //		2) int intValue = charValue;
 //		3) short shortValue = charValue;		//같은 2byte공간이지만 char은 0~65535에 아스키코드를 저장하기에 타입이 다르다. short는 -32768 ~ + 32767
 //		4) double doubleValue = byteValue;
+		
 //
 //
 //		2. 강제 타입 변환에 대한 내용입니다. 컴파일 에러가 발생하는 것은 무엇입니까
