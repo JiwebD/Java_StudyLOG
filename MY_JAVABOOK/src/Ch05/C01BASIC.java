@@ -94,11 +94,11 @@ public class C01BASIC {
 		//-------------------------
 		//++a(--a) : 전치 연산자 : 먼저 값 1증가(1감소) 이후 다른 연산자 처리
 		//a++(a--) : 후치 연산자 : 다른 연산자 처리 먼저 한 후 1증가(1감소)
-		int a = 10, b = 10, c, d=0;
-		
-		c = --a + b++;
-		d = a-- + ++b;
-		System.out.printf("a=%d , b=%d , c=%d, d=%d", a, b, c, d);
+//		int a = 10, b = 10, c, d=0;
+//		
+//		c = --a + b++;
+//		d = a-- + ++b;
+//		System.out.printf("a=%d , b=%d , c=%d, d=%d", a, b, c, d);
 		
 	
 
