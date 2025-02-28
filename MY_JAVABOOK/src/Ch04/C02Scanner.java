@@ -26,7 +26,7 @@ public class C02Scanner {
 //		System.out.printf("문자열 : %s %s %s\n", s1,s2,s3);
 		
 //		System.out.print("문자열 입력(띄어쓰기포함) : ");
-//		String str2 = sc.nextLine();		//문자열입력받기기능함수, 띄어쓰기 포함 안함
+//		String str2 = sc.nextLine();		//문자열입력받기기능함수, 띄어쓰기 포함 암함
 //		System.out.println("문자열 : " + str2);
 		
 		sc.close();
