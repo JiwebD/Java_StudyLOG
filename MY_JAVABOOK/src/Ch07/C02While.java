@@ -162,7 +162,7 @@ public class C02While {
 		// ***
 		// **
 		// *
-		
+
 //		Scanner sc = new Scanner(System.in);
 //		int n = sc.nextInt();
 //		int i = n;
@@ -181,12 +181,11 @@ public class C02While {
 //			i--;
 //		}
 
-	
-		//   *
-		//  ***
+		// *
+		// ***
 		// *****
-		//*******
-		
+		// *******
+
 //		Scanner sc = new Scanner(System.in);
 //		
 //		System.out.println("n번째 줄까지 별 : ");
@@ -215,14 +214,10 @@ public class C02While {
 //			i++;
 //		}
 
-		
-	
-	
-		
-		//*******
+		// *******
 		// *****
-		//  ***
-		//   *
+		// ***
+		// *
 //		Scanner sc = new Scanner(System.in);
 //		
 //		System.out.println("n번째 줄까지 별 : ");
@@ -256,18 +251,14 @@ public class C02While {
 //			System.out.println();
 //			i++;
 //		}
-		
 
-		
-		
-		
-		//   *
-		//  ***
-		// *****		
-		//*******
+		// *
+		// ***
 		// *****
-		//  ***
-		//   *
+		// *******
+		// *****
+		// ***
+		// *
 //		Scanner sc = new Scanner(System.in);
 //		
 //		System.out.println("n번째 줄까지 별 : ");
@@ -300,64 +291,100 @@ public class C02While {
 //			System.out.println();
 //			i++;
 //		}
-		
 
-		
-		//*******
+		// *******
 		// *****
-		//  ***
-		//   *		
-		//   *
-		//  ***
-		// *****		
-		//*******
+		// ***
+		// *
+		// *
+		// ***
+		// *****
+		// *******
+
+//	i	j(공백) 	k(*)	n(높이)				
+//	0	x	 	0-6		7		
+//	1	0-0   	0-4				
+//	2	0-1   	0-2				
+//	3	0-2 	0-0			
+//---------------------------
+// i<n/2+1	j=0				k=0
+// 			j++				k++
+// 			j<=i-1			k<=(n-1) - 2*i		
+
+//	4		0-1			0-2
+//	5		0-0			0-4
+//	6		x			0-6
+//---------------------------
+// i=0		j=0				k=0
+// i++		j++				k++
+// i>=n/2+1	j<n-(i+1)		k<=(2*i)-(n-1)
+
 		Scanner sc = new Scanner(System.in);
-		
+
 		System.out.println("n번째 줄까지 별 : ");
 		int n = sc.nextInt();
+
+		int i = 0;
+		while (i < n) {
+
+			if (i <( n / 2 )+ 1) {
+				// 공백
+				int j = 0;
+				while (j <= i-1) {
+					System.out.print(" ");
+					j++;
+				}
+				int k = 0;
+				while (k <= (n-1) - 2*i) {
+					System.out.print("*");
+					k++;
+				}
+			}
+
+			System.out.println();
+			i++;
+		}
 
 //		i		j(*)	n		k(공백)		
 //		7		0-6		8		x
 //		5		0-4		8		7
 //		3		0-2		8		7,5
 //		1		0-0		8		7,5,3
-		
-		int i = (n*2)-1;
 
-		while(i>0) {
-			int k = (n*2)-1;
-
-			while(k>i) {
-				System.out.print(" ");
-				k-=2;
-			}
-			int j = i-1;
-			while(j>=0) {
-				System.out.print("*");
-				j--;
-			}
-			System.out.println();
-			i-=2;
-		}
-		i = 1;
-
-		while(i<n*2) {
-			int k = (n*2)-1;
-
-			while(k>i) {
-				System.out.print(" ");
-				k-=2;
-			}
-			int j = 0;
-			while(j<i) {
-				System.out.print("*");
-				j++;
-			}
-			System.out.println();
-			i+=2;
-		}
-
-
+//		int i = (n*2)-1;
+//
+//		while(i>0) {
+//			int k = (n*2)-1;
+//
+//			while(k>i) {
+//				System.out.print(" ");
+//				k-=2;
+//			}
+//			int j = i-1;
+//			while(j>=0) {
+//				System.out.print("*");
+//				j--;
+//			}
+//			System.out.println();
+//			i-=2;
+//		}
+//		i = 1;
+//
+//		while(i<n*2) {
+//			int k = (n*2)-1;
+//
+//			while(k>i) {
+//				System.out.print(" ");
+//				k-=2;
+//			}
+//			int j = 0;
+//			while(j<i) {
+//				System.out.print("*");
+//				j++;
+//			}
+//			System.out.println();
+//			i+=2;
+//		}
 
 	}
 
