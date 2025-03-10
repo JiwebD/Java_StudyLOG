@@ -19,7 +19,7 @@ public class C06SimpleDateFormatMain {
 		Date date = fmtin.parse(ymd);	//예외처리 throws ParseException
 		System.out.println(date);
 
-		//포메터 객체 생성(출력용)
+		//포매터 객체 생성(출력용)
 		SimpleDateFormat fmtout = new SimpleDateFormat("yyyy~MM~dd");//y,M,d,h,m,s
 		System.out.println(fmtout.format(date));
 	}
