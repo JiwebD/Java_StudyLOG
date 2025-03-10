@@ -1,5 +1,5 @@
 package Ch00;
-//Ch00이란 이름의 package 
+//Ch00이란 이름의 package .
 public class Ch00HelloWorld {	// 클래스 영역(객체지향 문법 적용 범위)
 //	자바 클래스 생성
 //	1. Java Project  new 생성 - JAVABOOK
