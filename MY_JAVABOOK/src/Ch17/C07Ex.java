@@ -43,7 +43,7 @@ public class C07Ex {
 		//getMap이용해서 저장된 데이터 확인(출력)
 		for(String key : getMap().keySet()) {
 			Object val = C07Ex.map.get(key);
-			System.out.println("KEY : " + key + "VAL : " + (val instanceof String[])?Arrays.toString((String[])val):val);
+			System.out.println("KEY : " + key + "VAL : " + (val instanceof String[]?Arrays.toString((String[])val):val));
 			
 		}
 		
