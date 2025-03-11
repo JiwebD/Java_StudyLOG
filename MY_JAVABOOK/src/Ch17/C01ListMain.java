@@ -17,6 +17,7 @@ public class C01ListMain {
 		list.add("JSP/SERVLET");
 		list.add("STS");
 		list.add("SPRING BOOT");
+		list.add("SPRING BOOT");	//중복 허용
 		
 		
 		//조회
