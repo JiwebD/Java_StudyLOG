@@ -12,29 +12,38 @@ public class Main {
 		int C = sc.nextInt();
 		
 
-		if(60-B<C%60 || C/60 >0) {
+		if(60-B<C%60) {
 			A++;
-			
+			B = B+C%60;
 			if(A>23) {
-				A =0;
+				A=0;
 			}
-			A +=(C/60);
-			
-			
-			B += C%60;
-
-			if(B > 59) {
-				B -=60;
+			if(B>59) {
+				B = (B+C%60)-60;
 			}
 			System.out.println(A + " " + B);
 		}
-		else{
-			B+= C;
-			 if(B > 59) {
-				B -=60;
-			 }
-			 System.out.println(A + " " + B);
+		else if(C/60 > 0) {
+			A += C/60;
+			
+			if(60-B<C%60) {
+				A++;
+			}
+			B = B+C%60;
+			
+			if(A>23) {
+				A=0;
+			}
+			if(B>59) {
+				B = (B+C%60)-60;
+			}
+			System.out.println(A + " " + B);
 		}
+		else {
+			System.out.println(A + " " + (B+C));
+			
+		}
+
 
 	}
 }
