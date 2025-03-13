@@ -17,10 +17,14 @@ public class Main{
         
         StringTokenizer st;
         
+
         for(int i=0; i<T;i++){
             st = new StringTokenizer(br.readLine()," ");
             bw.write((Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()))+"\n");
         }
+
+
+
         
         br.close();
         bw.flush();
