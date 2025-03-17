@@ -166,17 +166,18 @@ public class C06Ex {
 
 	public static void Update(ChargeStation obj) throws Exception {
 		// 수정
-		pstmt = conn.prepareStatement("update charge_station set `행정구역`=?,"
-				+ " `지사`=?, `시설명`=?, `우편번호`=?, `주소`=? where `순번`=?");
+		pstmt = conn.prepareStatement("update charge_station set 행정구역=?,"
+				+ " 지사=?, 시설명=?, 우편번호=?, 주소=? where 순번=?");
 		
-		pstmt.setString(1, obj.getSection());
-		pstmt.setString(2, obj.getStation());
-		pstmt.setString(3, obj.getName());
-		pstmt.setInt(4, obj.getZipcode());
-		pstmt.setString(5, obj.getAddress());
-		pstmt.setInt(6, obj.getNo());
+		pstmt.setString(1, obj.getSection());	//행정구역
+		pstmt.setString(2, obj.getStation());	//지사
+		pstmt.setString(3, obj.getName());		//시설명
+		pstmt.setInt(4, obj.getZipcode());		//우편번호
+		pstmt.setString(5, obj.getAddress());	//주소
+		pstmt.setInt(6, obj.getNo());			//순번
 		
 		int result = pstmt.executeUpdate();
+		
 		if (result > 0)
 			System.out.println("[INFO] UPDATE 성공!");
 		else
@@ -211,7 +212,7 @@ public class C06Ex {
 //			Select();		//전체조회
 //			SelectOne();	//단건조회
 //			Update(new ChargeStation(198, "북구", "구암동부", "구암동(주)구암CNG충전소", 12345, "구암서로30"));	// 값 전부다 받아야함 유지값은 그대로 적으면됨.
-			Select();		//전체조회
+
 //			Delete();		//단건삭제
 //			
 
