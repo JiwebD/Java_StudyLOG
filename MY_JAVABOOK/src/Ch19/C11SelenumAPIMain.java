@@ -17,11 +17,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 //크롬서버.jar 다운로드 경로(셀레니움 공식 홈페이지)
 //https://www.selenium.dev/downloads/
 //Selenium Server (Grid) 색션에 Latest stable version 4.29.0 다운로드
+//라이브러리에 추가
 
 //크롬드라이브 다운로드 경로
 //https://googlechromelabs.github.io/chrome-for-testing/#stable
 //chromedriver => os에 맞는거 다운로드 = url 복사해서 다운로드
-//
+//chromedriver.exe 실행
+//Drivers패키지 안에 chromedriver.exe 넣기
 
 public class C11SelenumAPIMain {
 
