@@ -122,11 +122,11 @@ public class C06Ex {
 		}
 		freeConnection(pstmt,rs);
 	}
-	public static void SelectOne() throws Exception {
+	public static void SelectOne(String name) throws Exception {
 		// 전체 조회
 		//SQL 준비
-		pstmt = conn.prepareStatement("select * from charge_station where getString()");
-		
+		pstmt = conn.prepareStatement("select * from charge_station where 시설명=?");
+		pstmt.setString(1, name);
 		
 		//SQL 실행
 		rs =  pstmt.executeQuery();
@@ -210,7 +210,7 @@ public class C06Ex {
 //			Insert(new ChargeStation(201, "대구광역시", "대구지사", "대구가스", 10101, "대구"));
 			
 //			Select();		//전체조회
-//			SelectOne();	//단건조회
+			SelectOne("구암동(주)구암CNG충전소");	//단건조회
 //			Update(new ChargeStation(198, "북구", "구암동부", "구암동(주)구암CNG충전소", 12345, "구암서로30"));	// 값 전부다 받아야함 유지값은 그대로 적으면됨.
 
 //			Delete();		//단건삭제
