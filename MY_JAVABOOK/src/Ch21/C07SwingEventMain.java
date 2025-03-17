@@ -12,15 +12,79 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.BadLocationException;
+
+
+class Memo{
+	private int id;
+	private String text;
+	private LocalDateTime createdAt;
+	//toString
+	@Override
+	public String toString() {
+		return "Memo [id=" + id + ", text=" + text + ", createdAt=" + createdAt + "]";
+	}
+	
+	//getter and setter
+	public int getId() {
+		return id;
+	}
+	
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getText() {
+		return text;
+	}
+	
+	public void setText(String text) {
+		this.text = text;
+	}
+	
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+	
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+	
+	//모든 인자생성자
+	public Memo(int id, String text, LocalDateTime createdAt) {
+		super();
+		this.id = id;
+		this.text = text;
+		this.createdAt = createdAt;
+	}
+	
+
+	//디폴트 생성자
+	public Memo() {
+		super();
+	}
+	
+	
+}
 
 class C07GUI extends JFrame implements ActionListener,KeyListener,MouseListener{
 	//button
@@ -32,13 +96,22 @@ class C07GUI extends JFrame implements ActionListener,KeyListener,MouseListener{
 	JButton btn6;	//SELECTONE
 	
 	JButton input;
-	//txtfield
 	JTextField txt1;
-	//textArea
 	JTextArea area1;
-	Writer out = null;
 	
-	C07GUI(String title){
+	Writer out;
+		
+	// DB CONN DATA
+	static String id = "root";
+	static String pw = "1234";
+	static String url = "jdbc:mysql://localhost:3306/testdb";
+
+	// JDBC참조변수
+	static Connection conn = null;
+	static PreparedStatement pstmt = null;
+	static ResultSet rs = null;
+	
+	C07GUI(String title) throws SQLException, ClassNotFoundException{
 		
 		//Frame
 		super(title);
@@ -67,6 +140,15 @@ class C07GUI extends JFrame implements ActionListener,KeyListener,MouseListener{
 		btn3 = new JButton("INSERT");
 		btn3.setBounds(290,180,175,60);
 		
+		btn4 = new JButton("UPDATE");
+		btn4.setBounds(290,260,175,60);
+		
+		btn5 = new JButton("DELETE");
+		btn5.setBounds(290,340,175,60);
+		
+		btn6 = new JButton("SELECT");
+		btn6.setBounds(290,420,175,60);
+		
 		input = new JButton("입력");
 		input.setBounds(290,540,175,40);
 		
@@ -74,6 +156,9 @@ class C07GUI extends JFrame implements ActionListener,KeyListener,MouseListener{
 		btn1.addActionListener(this);
 		btn2.addActionListener(this);
 		btn3.addActionListener(this);
+		btn4.addActionListener(this);
+		btn5.addActionListener(this);
+		btn6.addActionListener(this);
 		input.addActionListener(this);
 		txt1.addKeyListener(this);
 		area1.addMouseListener(this);
@@ -84,12 +169,22 @@ class C07GUI extends JFrame implements ActionListener,KeyListener,MouseListener{
 		panel.add(btn1);
 		panel.add(btn2);
 		panel.add(btn3);
+		panel.add(btn4);
+		panel.add(btn5);
+		panel.add(btn6);
 		panel.add(input);
 		//Frame(panel)
 		add(panel);
 		
 		//Frame
 		setVisible(true);
+		
+		// DB CONN DATA
+		// DB 연결코드
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		System.out.println("Driver Loading Success...");
+		conn = DriverManager.getConnection(url, id, pw);
+		System.out.println("DB CONNECTED...");
 	}
 
 	@Override
@@ -179,8 +274,64 @@ class C07GUI extends JFrame implements ActionListener,KeyListener,MouseListener{
 			}
 		}
 		else if(e.getSource()==btn3) {
-			System.out.println("대화기록보기");
+			System.out.println("INSERT");
+			
+			try {
+			pstmt = conn.prepareStatement("insert into tbl_memo values(null,?,now())");
+			pstmt.setString(1, area1.getText());
+			int result = pstmt.executeUpdate();
+			
+			if(result>0) {
+				System.out.println("[INFO] INSERT 성공");
+				JOptionPane.showMessageDialog(null,  "INSERT 성공","INSERT확인창",JOptionPane.INFORMATION_MESSAGE);
+			}
+			else {
+				System.out.println("[INFO] INSERT 실패");
+				JOptionPane.showMessageDialog(null,  "INSERT 실패","INSERT확인창",JOptionPane.ERROR_MESSAGE);
+
+			}
+			} catch (SQLException el) {
+				el.printStackTrace();
+			} finally {
+				try {pstmt.close();}catch(Exception el) {el.printStackTrace();}
+			}
 		}
+		else if(e.getSource()==btn4) {}
+		else if(e.getSource()==btn5) {}
+		else if(e.getSource()==btn6) {
+			//전체 조회 작성
+			
+			try {
+				
+			//SQL 준비
+			pstmt = conn.prepareStatement("select * from tbl_memo");
+			
+			//SQL 실행
+			List<Memo> list = new ArrayList();
+			Memo memo;
+			rs = pstmt.executeQuery();
+			
+			if(rs!=null) {
+				while(rs.next()){
+					memo = new Memo();
+					memo.setId(rs.getInt("id"));
+					memo.setText(rs.getString("text"));
+					Timestamp timestamp = rs.getTimestamp("createdAt");
+					memo.setCreatedAt(timestamp.toLocalDateTime());
+					list.add(memo);
+					
+				}
+			}
+			list.forEach(System.out::println);
+			} catch(Exception e3) {
+				e3.printStackTrace();
+			} finally {
+				try {rs.close();} catch(Exception e2){}
+				try {pstmt.close();} catch(Exception e2){}
+			}
+			
+		}
+		
 		else if(e.getSource()==input) {
 			System.out.println("입력");
 		}
@@ -266,9 +417,9 @@ class C07GUI extends JFrame implements ActionListener,KeyListener,MouseListener{
 	
 }
 
-public class C08SwingEventMain {
+public class C07SwingEventMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
 		new C07GUI("Chatting UI");
 		
