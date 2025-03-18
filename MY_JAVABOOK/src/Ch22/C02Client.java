@@ -13,7 +13,7 @@ public class C02Client {
 
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		
-		Socket client = new Socket("192.168.16.62", 7003);
+		Socket client = new Socket("192.168.16.62", 7000);
 		
 		//INOUT STREAM
 		System.out.println("CLIENT 연결 시작합니다.");

@@ -13,7 +13,7 @@ public class C02Server {
 
 	public static void main(String[] args) throws IOException {
 		//자바 소캣 생성									//ncpa.cpl에서 Realtek인 이더넷에서 확인
-		ServerSocket server = new ServerSocket(7001);	//192.168.16.42:7000  
+		ServerSocket server = new ServerSocket(7000);	//192.168.16.42:7000  
 		System.out.println("[INFO] SERVER SOCKET LISTENING");
 		
 		//1회 응답
