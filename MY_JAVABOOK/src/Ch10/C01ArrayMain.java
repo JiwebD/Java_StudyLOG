@@ -19,7 +19,7 @@ public class C01ArrayMain {
 		arr1[4] = sc.nextInt();
 
 		for(int i=0; i<arr1.length; i++) {
-			System.out.println(i+"."+arr1[i]);
+			System.out.print(i+"."+arr1[i]);
 		}
 		System.out.println("------------------");
 		for(int el : arr1) {
