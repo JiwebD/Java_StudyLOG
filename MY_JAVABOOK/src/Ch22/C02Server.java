@@ -28,7 +28,7 @@ public class C02Server {
 		//내용교환(q:종료)
 		Scanner sc = new Scanner(System.in);
 		String recv=null;
-		String send=null;;
+		String send=null;
 		while(true) {
 			//SERVER->CLIENT 송신
 			System.out.print("[SERVER(q:종료)] :");
