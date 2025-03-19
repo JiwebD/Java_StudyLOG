@@ -123,7 +123,7 @@ public class C06Ex {
 		freeConnection(pstmt,rs);
 	}
 	public static void SelectOne(String name) throws Exception {
-		// 전체 조회
+		// 단일 조회
 		//SQL 준비
 		pstmt = conn.prepareStatement("select * from charge_station where 시설명=?");
 		pstmt.setString(1, name);
