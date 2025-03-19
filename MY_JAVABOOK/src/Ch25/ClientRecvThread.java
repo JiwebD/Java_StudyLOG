@@ -8,15 +8,12 @@ public class ClientRecvThread implements Runnable{
 
 	//InputStream
 	DataInputStream din;
-	Sgui gui;
-	ClientRecvThread(DataInputStream din, Sgui gui){
+	Cgui gui;
+	ClientRecvThread(DataInputStream din, Cgui gui){
 		this.din = din;
 		this.gui = gui;
 	}
 	
-	ClientRecvThread(DataInputStream din){
-		this.din = din;
-	}
 	@Override
 	public void run() {
 		String recv;

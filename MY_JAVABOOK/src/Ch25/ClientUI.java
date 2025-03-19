@@ -55,7 +55,7 @@ class Cgui extends JFrame implements ActionListener,KeyListener
 		setVisible(true);	//프레임창 보여주기
 		
 		//소캣생성
-		client = new Socket("192.168.16.62", 7002);
+		client = new Socket("192.168.16.62", 7000);
 		System.out.println("[SERVER] 연결 시작합니다.");
 		
 		//INOUT STREAM
@@ -67,7 +67,7 @@ class Cgui extends JFrame implements ActionListener,KeyListener
 		//수신스레드
 		ClientRecvThread recv = new ClientRecvThread(din,this);
 		Thread th = new Thread(recv);
-		th.start():
+		th.start();
 		
 	
 		
@@ -102,6 +102,10 @@ class Cgui extends JFrame implements ActionListener,KeyListener
 	
 			//2 필드의 내용 삭제
 			txt1.setText("");
+			
+			//스크롤을 맨 아래로 이동
+			area.setCaretPosition(area.getDocument().getLength());
+			
 			}catch(Exception e2) {
 				e2.printStackTrace();
 			}

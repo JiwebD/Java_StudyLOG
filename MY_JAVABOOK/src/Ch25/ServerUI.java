@@ -61,7 +61,7 @@ class Sgui extends JFrame implements ActionListener,KeyListener
 		
 		//소켓연결-ServerSocket
 		//자바 소캣 생성									//ncpa.cpl에서 Realtek인 이더넷에서 확인
-		server = new ServerSocket(7000);	//192.168.16.42:7000  
+		server = new ServerSocket(7002);	//192.168.16.42:7000  
 		System.out.println("[INFO] SERVER SOCKET LISTENING");
 		
 		//1회 응답
@@ -109,6 +109,9 @@ class Sgui extends JFrame implements ActionListener,KeyListener
 			
 			//2 필드의 내용 삭제
 			txt1.setText("");
+			
+			//스크롤을 맨 아래로 이동
+			area.setCaretPosition(area.getDocument().getLength());
 			
 			}catch(Exception e2) {
 				e2.printStackTrace();
