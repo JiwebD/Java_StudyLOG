@@ -5,10 +5,10 @@ import java.util.Scanner;
 //Grade 클래스 작성
 class Grade{
 	private int math;
-	int science;
-	int english;
-	
-	
+	private int science;
+	private int english;
+
+
 	public Grade(int math, int science, int english) {
 		super();
 		this.math = math;
@@ -34,7 +34,7 @@ public class C09명붐자바_예제2 {
 	   int science = sc.nextInt();
 	   int english = sc.nextInt();
 	   Grade me = new Grade(math, science, english);
-	   System.out.printf("평균은 %f",me.average(math,science,english)); // average()는 평균을 계산하여 리턴
+	   System.out.printf("평균은 %f\n",me.average(math,science,english)); // average()는 평균을 계산하여 리턴
 	   
 	   sc.close();
 	}

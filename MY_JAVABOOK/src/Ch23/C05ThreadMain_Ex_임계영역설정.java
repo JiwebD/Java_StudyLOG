@@ -47,7 +47,7 @@ public class C05ThreadMain_Ex_임계영역설정 {
 		Thread thread1 = new Thread(incrementThread1);
 		Thread thread2 = new Thread(incrementThread2);
 		Thread thread3 = new Thread(incrementThread3);
-		Thread thread4 = new Thread(incrementThread3);
+		Thread thread4 = new Thread(incrementThread4);
 
 		thread1.setName("TH1");
 		thread2.setName("TH2");

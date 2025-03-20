@@ -21,6 +21,7 @@ class Engine{
 		폭발();
 		배기();
 	}
+	
 }
 
 class Car{
