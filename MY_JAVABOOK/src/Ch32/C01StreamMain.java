@@ -137,6 +137,7 @@ public class C01StreamMain {
 		
 		System.out.println(list5);
 		
+		System.out.println("-------------");
 		List<Integer> list6 =
 		list4.stream()
 					  .map(Person::getName)
