@@ -24,7 +24,7 @@ public class 문제1 {
 		
 
 		while (true) {
-			System.out.println("----------------M E N U----------------");
+			System.out.println("----------------M E N U-----------------");
 			System.out.println("1 추가");
 			System.out.println("2 정렬");
 			System.out.println("3 확인");
