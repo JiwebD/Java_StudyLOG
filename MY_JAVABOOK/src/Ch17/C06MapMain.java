@@ -3,7 +3,7 @@ package Ch17;
 import java.util.HashMap;
 import java.util.Map;
 
-public class C06MepMain {
+public class C06MapMain {
 
 	public static void main(String[] args) {
 		Map<String,Integer> map = new HashMap();

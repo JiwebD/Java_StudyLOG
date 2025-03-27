@@ -19,7 +19,7 @@ public class C01DBConn {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		//19번 패키지 라이브러리에 mysql-connector-j-9.2.0.jar 추가
+		//라이브러리에 mysql-connector-j-9.2.0.jar 추가
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver"); // 무슨경로를 말하는거지?
 			System.out.println("Driver Loading Success...");
