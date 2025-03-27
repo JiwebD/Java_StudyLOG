@@ -1,13 +1,26 @@
 package Ch38.Controller;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 import Ch38.Domain.Dto.BookDto;
+import Ch38.Domain.Service.BookServiceImpl;
 
 public class BookController implements SubController {
 	
+	//BookService
+	private BookServiceImpl bookService;
+	
 	Map<String, Object> response ;
+	
+	public BookController() {
+		try {
+			bookService = BookServiceImpl.getInstance();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	//C(1)R(2)U(3)D(4)
 	@Override
@@ -23,6 +36,8 @@ public class BookController implements SubController {
 			response.put("message", "유효하지 않은 서비스 요청입니다.");
 			return response;
 		}
+		
+		try {
 		switch(serviceNo) {
 		case 1:				//C = 도서등록(ROLE-사서)
 			System.out.println("[SC] 도서등록 요청 확인");
@@ -42,7 +57,12 @@ public class BookController implements SubController {
 				return response;
 			}
 			//03 관련 서비스 실행
+			boolean isSuccess = bookService.bookJoin(bookDto);
 			//04 뷰로 이동(or 내용전달)
+			if(isSuccess) {
+				response.put("status", isSuccess);
+				response.put("message", "회원가입 성공!");
+			}
 			break;
 		case 2:				//R = 도서조회(ROLE-회원,사서,관리자)
 			System.out.println("[SC] 도서조회 요청 확인");
@@ -70,6 +90,9 @@ public class BookController implements SubController {
 			response.put("status", false);
 			response.put("message", "잘못된 서비스번호 요청입니다.");
 		}
+		}catch(Exception e) {
+			exceptionHandler(e);
+		}
 		
 		return response;
 	}
@@ -92,6 +115,19 @@ public class BookController implements SubController {
 		}
 		return true;
 	}
+	
+	// 예외처리함수
+		public Map<String, Object> exceptionHandler(Exception e) {
+
+			if (response == null)
+				response = new HashMap();
+
+			response.put("status", false);
+			response.put("message", e.getMessage());
+			response.put("exception", e);
+
+			return response;
+		}
 	
 
 }

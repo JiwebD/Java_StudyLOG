@@ -23,7 +23,7 @@ public class BookDaoImpl {
 	//싱글톤 패턴처리
 	private static BookDaoImpl instance;
 	private BookDaoImpl() throws ClassNotFoundException, SQLException {
-		
+		System.out.println("[SERVICE] BookServiceImpl init...");
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection(url,id,pw);
 		System.out.println("BookDaoImpl DB Connection Success");

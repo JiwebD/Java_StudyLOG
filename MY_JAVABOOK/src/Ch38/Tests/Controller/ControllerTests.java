@@ -14,7 +14,7 @@ class ControllerTests {
 	
 
 	@Test
-
+	@Disabled
 	void test() {
 		
 		//View에서 요청정보 담기
@@ -35,7 +35,7 @@ class ControllerTests {
 		}
 	}
 	@Test
-	@Disabled
+	
 	void test2() {
 		
 		//View에서 요청정보 담기
@@ -43,7 +43,7 @@ class ControllerTests {
 		params.put("endPoint", "/book");//endPoint
 		params.put("serviceNo", 1);	//ServiceNo
 		//도서등록 - 인자전달
-		params.put("bookCode", "1234234");	//ServiceNo
+		params.put("bookCode", "23452345");	//ServiceNo
 		params.put("bookName", "이게뭘까요");	//ServiceNo
 		params.put("publisher", "왓미디어");	//ServiceNo
 		params.put("isbn", "1111-1111");	//ServiceNo
