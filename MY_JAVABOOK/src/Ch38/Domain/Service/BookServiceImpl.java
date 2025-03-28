@@ -2,6 +2,7 @@ package Ch38.Domain.Service;
 
 import java.sql.SQLException;
 
+import Ch38.Domain.Dao.BookDao;
 import Ch38.Domain.Dao.BookDaoImpl;
 import Ch38.Domain.Dto.BookDto;
 
@@ -10,7 +11,7 @@ import Ch38.Domain.Dto.BookDto;
 public class BookServiceImpl {
 	
 	//
-	private BookDaoImpl bookDao;
+	private BookDao bookDao;
 	
 	//싱클톤 패턴
 	private static BookServiceImpl instance;
