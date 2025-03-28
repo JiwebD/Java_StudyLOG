@@ -87,9 +87,9 @@ public class C10내부시험_ex {
 		try {
 			conn();
 			// insert
-			insertBook(new C10내부시험_BookDTO(1L, "도서명1", "출판사명1", "isbn-1"));
-			insertBook(new C10내부시험_BookDTO(2L, "도서명2", "출판사명2", "isbn-2"));
-			insertBook(new C10내부시험_BookDTO(3L, "도서명3", "출판사명3", "isbn-3"));
+			insertBook(new C10내부시험_BookDTO(4L, "도서명1", "출판사명1", "isbn-1"));
+			insertBook(new C10내부시험_BookDTO(5L, "도서명2", "출판사명2", "isbn-2"));
+			insertBook(new C10내부시험_BookDTO(6L, "도서명3", "출판사명3", "isbn-3"));
 
 			// selectAll
 			List<C10내부시험_BookDTO> allBook = selectAll();
@@ -97,7 +97,7 @@ public class C10내부시험_ex {
 			allBook.forEach(el -> System.out.println(el));
 
 			// select
-			C10내부시험_BookDTO dto = select(1L);
+			C10내부시험_BookDTO dto = select(4L);
 			System.out.println("select : " + dto);
 
 			// update

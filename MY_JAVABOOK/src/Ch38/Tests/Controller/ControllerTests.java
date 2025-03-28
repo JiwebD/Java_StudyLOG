@@ -10,7 +10,7 @@ import Ch38.Controller.FrontController;
 
 class ControllerTests {
 	
-	FrontController fc = FrontController.getInstance();
+	FrontController controller = FrontController.getInstance();
 	
 
 	@Test
@@ -27,7 +27,7 @@ class ControllerTests {
 		params.put("password", "1234");	//ServiceNo
 		
 		//요청하기
-		Map<String,Object> response = fc.execute(params);
+		Map<String,Object> response = controller.execute(params);
 		
 		//응답확인
 		for(String key : response.keySet()) {
@@ -43,13 +43,13 @@ class ControllerTests {
 		params.put("endPoint", "/book");//endPoint
 		params.put("serviceNo", 1);	//ServiceNo
 		//도서등록 - 인자전달
-		params.put("bookCode", "02345678");	//ServiceNo
+		params.put("bookCode", "04345678");	//ServiceNo
 		params.put("bookName", "이게뭘까요");	//ServiceNo
 		params.put("publisher", "왓미디어");	//ServiceNo
 		params.put("isbn", "1111-1111");	//ServiceNo
 		
 		//요청하기
-		Map<String,Object> response = fc.execute(params);
+		Map<String,Object> response = controller.execute(params);
 		
 		//응답확인
 		for(String key : response.keySet()) {

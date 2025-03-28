@@ -35,9 +35,9 @@ public class UserServiceImpl {
 			connectionPool.beginTransaction();
 			
 			isJoin = userDao.insert(userDto) > 0;	//sql 질의 다수
-			userDao.insert(new UserDto("aaaaa","","",""));
-			userDao.insert(new UserDto("aaaab","","",""));
-			userDao.insert(new UserDto("aaaaa","","",""));	//PK 중복 오류!
+//			userDao.insert(new UserDto("aaaaa","","",""));
+//			userDao.insert(new UserDto("aaaab","","",""));
+//			userDao.insert(new UserDto("aaaaa","","",""));	//PK 중복 오류!
 		
 			connectionPool.commitTransaction();
 			
