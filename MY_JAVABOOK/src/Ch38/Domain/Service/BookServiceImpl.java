@@ -14,22 +14,22 @@ public class BookServiceImpl {
 	
 	//싱클톤 패턴
 	private static BookServiceImpl instance;
-	private BookServiceImpl() throws ClassNotFoundException, SQLException {
+	private BookServiceImpl() throws Exception{
 		bookDao = BookDaoImpl.getInstance();
 		System.out.println("[SERVICE] BookServiceImpl init...");
-	};
-	public static BookServiceImpl getInstance() throws ClassNotFoundException, SQLException{
+	}
+	public static BookServiceImpl getInstance() throws Exception{
 		if(instance==null)
 			instance = new BookServiceImpl();
 		return instance ;
 	}
 
-	//회원가입 (+TX처리필요)
-	public boolean bookJoin(BookDto bookDto) throws SQLException{
+	// TX처리필요 + 비즈니스 유효성검사
+	public boolean bookRegistration(BookDto bookDto) throws Exception{
 		
 		return bookDao.insert(bookDto) > 0;
 		
-	};
+	}
 	
 	//회원조회
 	

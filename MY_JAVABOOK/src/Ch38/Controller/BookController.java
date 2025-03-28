@@ -17,8 +17,8 @@ public class BookController implements SubController {
 	public BookController() {
 		try {
 			bookService = BookServiceImpl.getInstance();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+		}catch(Exception e) {
+			exceptionHandler(e);
 		}
 	}
 	
@@ -57,11 +57,11 @@ public class BookController implements SubController {
 				return response;
 			}
 			//03 관련 서비스 실행
-			boolean isSuccess = bookService.bookJoin(bookDto);
+			boolean isSuccess = bookService.bookRegistration(bookDto);
 			//04 뷰로 이동(or 내용전달)
 			if(isSuccess) {
 				response.put("status", isSuccess);
-				response.put("message", "회원가입 성공!");
+				response.put("message", "도서등록 성공!");
 			}
 			break;
 		case 2:				//R = 도서조회(ROLE-회원,사서,관리자)
@@ -103,9 +103,9 @@ public class BookController implements SubController {
 			System.out.println("[INVALID] bookCode의 길이는 8자리만 허용합니다.");
 			return false;
 		}
-		if(bookDto.getBookCode().matches("[0-9]+")) {
-			response.put("error", "bookCode의 숫자만 허용합니다.");
-			System.out.println("[INVALID] bookCode의 숫자만 허용합니다.");
+		if(!bookDto.getBookCode().matches("[0-9]+")) {
+			response.put("error", "bookCode는 숫자만 허용합니다.");
+			System.out.println("[INVALID] bookCode는 숫자만 허용합니다.");
 			return false;
 		}
 		if(bookDto.getBookName().length()>255) {
