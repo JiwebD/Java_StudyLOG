@@ -49,7 +49,7 @@ public class BookDAO {
 		try {
 			
 			pstmt = conn.prepareStatement("insert into Book_Tbl values(?,?,?,?,?,?)");
-			pstmt.setString(1, bookDto.getBookCode());
+			pstmt.setInt(1, bookDto.getBookCode());
 			pstmt.setInt(2, bookDto.getClassificationId());
 			pstmt.setString(3, bookDto.getBookAuthor());
 			pstmt.setString(4, bookDto.getBookName());
@@ -67,38 +67,41 @@ public class BookDAO {
 	}
 	// 수정
 	public int update(BookDTO bookDto) throws SQLException {
-		pstmt = conn.prepareStatement("update Book_Tbl set Book_code=?,"
-				+ " Classification_Id=?, book_author=?, book_name=?, publisher=? where Book_code=?");
-		
-		pstmt.setString(1, bookDto.getBookCode());
-		pstmt.setInt(2, bookDto.getClassificationId());
-		pstmt.setString(3, bookDto.getBookAuthor());
-		pstmt.setString(4, bookDto.getBookName());
-		pstmt.setString(5, bookDto.getPublisher());
-		
-		int result = pstmt.executeUpdate();
-		return -1;
+	    pstmt = conn.prepareStatement(
+	            "UPDATE Book_Tbl SET classification_id=?, book_author=?, book_name=?, publisher=?, isreserve=? WHERE book_code=?");
+
+	        pstmt.setInt(1, bookDto.getClassificationId());
+	        pstmt.setString(2, bookDto.getBookAuthor());
+	        pstmt.setString(3, bookDto.getBookName());
+	        pstmt.setString(4, bookDto.getPublisher());
+	        pstmt.setInt(5, bookDto.getIsreserve());
+	        pstmt.setInt(6, bookDto.getBookCode());
+
+	        return pstmt.executeUpdate();
 	}
 	//삭제
-	public int delete(BookDTO bookDto) {
-		return -1;
+	public int delete(BookDTO bookDto) throws SQLException {
+	    pstmt = conn.prepareStatement("DELETE FROM Book_Tbl WHERE book_code = ?");
+	    pstmt.setInt(1, bookDto.getBookCode());
+	    return pstmt.executeUpdate();
 	}
 	//단건조회
 	public BookDTO select(BookDTO bookDto) throws Exception{
 		
 		try {
 		pstmt = conn.prepareStatement("select * from Book_Tbl where bookcode = ?");
-		pstmt.setString(1, bookDto.getBookCode());
+		pstmt.setInt(1, bookDto.getBookCode());
 		rs = pstmt.executeQuery();
 		BookDTO resultDTO = null ;
 
 			if(rs.next()) {
 				resultDTO = new BookDTO();
-				resultDTO.setBookCode(rs.getString("bookcode"));
+				resultDTO.setBookCode(rs.getInt("bookcode"));
+				resultDTO.setClassificationId(rs.getInt("classificationId"));
+				resultDTO.setBookAuthor(rs.getString("bookAuthor"));
 				resultDTO.setBookName(rs.getString("bookname"));
 				resultDTO.setPublisher(rs.getString("publisher"));
-				resultDTO.setBookAuthor(rs.getString("bookAuthor"));
-				resultDTO.setClassificationId(rs.getInt("classificationId"));
+				resultDTO.setIsreserve(rs.getInt("isreserve"));
 
 			}
 		
@@ -124,11 +127,12 @@ public class BookDAO {
 		if(rs!=null) {			
 			while(rs.next()) {
 				BookDTO dto = new BookDTO();
-				dto.setBookCode(rs.getString("bookcode"));
+				dto.setBookCode(rs.getInt("bookcode"));
+				dto.setClassificationId(rs.getInt("classificationId"));
+				dto.setBookAuthor(rs.getString("bookAuthor"));
 				dto.setBookName(rs.getString("bookname"));
 				dto.setPublisher(rs.getString("publisher"));
-				dto.setBookAuthor(rs.getString("bookAuthor"));
-				dto.setClassificationId(rs.getInt("classificationId"));
+				dto.setIsreserve(rs.getInt("isreserve"));
 				resultList.add(dto);
 			}
 		}

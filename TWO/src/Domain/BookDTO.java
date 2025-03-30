@@ -1,7 +1,7 @@
 package Domain;
 
 public class BookDTO {
-	private String bookCode;
+	private int bookCode;
 	private int classificationId;
 	private String bookAuthor;
 	private String bookName;
@@ -12,7 +12,7 @@ public class BookDTO {
 
 
 
-	public BookDTO(String bookCode, int classificationId, String bookAuthor, String bookName, String publisher,
+	public BookDTO(int bookCode, int classificationId, String bookAuthor, String bookName, String publisher,
 			int isreserve) {
 		super();
 		this.bookCode = bookCode;
@@ -37,10 +37,10 @@ public class BookDTO {
 
 
 
-	public String getBookCode() {
+	public int getBookCode() {
 		return bookCode;
 	}
-	public void setBookCode(String bookCode) {
+	public void setBookCode(int bookCode) {
 		this.bookCode = bookCode;
 	}
 	public String getBookName() {
@@ -75,6 +75,9 @@ public class BookDTO {
 		return "BookDTO [bookCode=" + bookCode + ", classificationId=" + classificationId + ", bookAuthor=" + bookAuthor
 				+ ", bookName=" + bookName + ", publisher=" + publisher + ", isreserve=" + isreserve + "]";
 	}
+
+
+
 
 
 	

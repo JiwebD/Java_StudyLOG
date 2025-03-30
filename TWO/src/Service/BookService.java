@@ -1,6 +1,8 @@
 package Service;
 
 
+import java.util.List;
+
 import Domain.BookDAO;
 import Domain.BookDTO;
 
@@ -26,17 +28,35 @@ public class BookService {
 	// TX처리필요 + 비즈니스 유효성검사
 	public boolean bookRegistration(BookDTO bookDto) throws Exception{
 		
-		return bookDao.insert(bookDto) > 0;
-		
+	    System.out.println("[BookService] 도서등록 실행: " + bookDto);
+	    try {
+	        int result = bookDao.insert(bookDto);
+	        System.out.println("[BookService] insert 결과: " + result);
+	        return result > 0;
+	    } catch (Exception e) {
+	        System.out.println("[BookService] 예외 발생: " + e.getMessage());
+	        e.printStackTrace();
+	        return false;
+	    }
 	}
 	
-	//회원조회
-	
-	//회원정보수정
-	
-	//회원탈퇴
-	
-	//로그인
-	
-	//로그아웃
+	// 단건 조회
+	public BookDTO findBook(BookDTO dto) throws Exception {
+	    return bookDao.select(dto);
+	}
+
+	// 전체 조회
+	public List<BookDTO> findAllBooks() throws Exception {
+	    return bookDao.selectAll();
+	}
+
+	// 도서 수정
+	public boolean updateBook(BookDTO dto) throws Exception {
+	    return bookDao.update(dto) > 0;
+	}
+
+	// 도서 삭제
+	public boolean deleteBook(BookDTO dto) throws Exception {
+	    return bookDao.delete(dto) > 0;
+	}
 }
