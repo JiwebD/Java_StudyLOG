@@ -34,10 +34,10 @@ public class Viewer {
 			System.out.println("--------------------------");
 			System.out.println("MAIN");
 			System.out.println("--------------------------");
-			System.out.println("1 도서서비스");
-			System.out.println("2 인증서비스");
-			System.out.println("3 대여서비스");
-			System.out.println("4 예약서비스");
+			System.out.println("1 도서 추가");
+			System.out.println("2 회원 정보 조회");
+			System.out.println("3 대여 도서 정보 수정");
+			System.out.println("4 예약 도서 삭제");
 			System.out.println("5 종료");
 			System.out.print("번호 : ");
 			int num = sc.nextInt();
