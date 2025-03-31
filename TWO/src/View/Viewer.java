@@ -219,8 +219,7 @@ public class Viewer {
 		System.out.println("--------------------------");
 		System.out.println("도서 수정하기");
 		System.out.println("--------------------------");
-		System.out.print("도서코드 : ");
-		String code = sc.next();
+
 		System.out.print("분류번호 : ");
 		String ClfID = sc.next();
 		System.out.print("저자 : ");
@@ -231,17 +230,19 @@ public class Viewer {
 		String psher = sc.next();
 		System.out.print("예약상태 : ");
 		String isrv = sc.next();
+		System.out.print("수정할도서코드 : ");
+		String code = sc.next();
 
 		// View에서 요청정보 담기
 		Map<String,Object> params = new HashMap();
 		params.put("endPoint", "/book");	// endPoint
 		params.put("serviceNo", 4);			// ServiceNo
-		params.put("bookCode", code);
 		params.put("classificationId", ClfID);
 		params.put("bookAuthor", author);
 		params.put("bookName", name);
 		params.put("publisher", psher);
 		params.put("isreserve", isrv);
+		params.put("bookCode", code);
 
 		// 요청하기
 		Map<String,Object> response = controller.execute(params);

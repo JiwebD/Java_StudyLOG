@@ -187,6 +187,11 @@ public class BookController implements Controller {
 			System.out.println("[INVALID] bookName의 길이는 255자를 넘기지 않아야 합니다.");
 			return false;
 		}
+		if(bookDto.getIsreserve() !=0 && bookDto.getIsreserve() !=1) {
+			response.put("error", "예약상태는 0 또는 1 만 허용합니다.");
+			System.out.println("[INVALID] 예약상태는 0 또는 1 만 허용합니다.");
+			return false;
+		}
 		return true;
 	}
 	
