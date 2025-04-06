@@ -11,7 +11,7 @@ public class Ch00HelloWorld {	// 클래스 영역(객체지향 문법 적용 범
 //	1.Programming Language
 // -------------------------
 //	Pro	 		+ 	gram
-//	-미리, -사전의    쓰다, 적다
+//	-미리, -사전의    쓰다, 적다.
 	
 //	COMPUTE는 왜 있나?
 //	compute : 계산하다
