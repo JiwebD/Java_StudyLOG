@@ -1,1 +1,1 @@
-"# Java_StudyLOGS" 
+"# Java_StudyLOG" 
